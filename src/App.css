@@ -1,0 +1,194 @@
+/* цвета:
+розовый: #f082b8 
+зеленый: #338852
+мал точки в футере и конпки вперед-назад в тулзах: #564769*/
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    background-color: #060612;
+    color: #aca1c4;
+    font-weight: 200;
+}
+
+svg {
+    height: 18px;
+    width: 18px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px;
+
+    background: none;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+button:hover {
+    filter: drop-shadow(0 0 3px #f69ac1);
+}
+
+    .app {
+        background-color: #0b0917;
+        border: 1px solid #8b466767;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+            .header-title {
+                font-size: 24px;
+                border-right: 1px solid grey;
+                padding: 0 20px;
+                font-weight: 400;
+                color: #eeeeee;
+            }
+
+            .header-theme {
+                font-size: 20px;
+                font-weight: 200;
+                padding: 0 20px;
+                color: #f082b8;
+            }
+        
+        .toolbar {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            background-color: #100d1d;
+            margin-bottom: -20px;
+        }
+
+            .toolbar-view,
+            .toolbar-history,
+            .toolbar-actions {
+                display: flex;
+                padding: 0 20px;
+                gap: 15px;
+            }
+
+            .toolbar-view {
+                gap: 30px;
+            }
+
+            .toolbar-history {
+                margin-left: auto;
+                border-right: 1px solid #8b466767;
+                color: #564769;
+            }
+
+        .main {
+            display: flex;
+            border: 1px solid #8b466767;
+            border-radius: 12px;
+            background-color: #100d1d;
+        }
+
+            .editor-section,
+            .preview-section {
+                flex: 1;
+                height: 60vh;
+                width: 100%;
+            }
+
+            .main-split .editor-section {
+                border-right: 1px solid #8b466767;
+            }
+
+            #editor,
+            .preview-area {
+                padding: 20px;
+                overflow-y: auto;
+                height: 100%;
+                width: 100%;
+            }
+
+            #editor {
+                outline: none;
+                border: none;
+                resize: none;
+                background-color: inherit;
+                color: inherit;
+
+                overflow-wrap: break-word;
+            }
+
+            .preview-area {
+                overflow-wrap: anywhere;
+            }
+
+        .footer {
+            display: flex;
+            align-items: center;
+
+            border: 1px solid #8b466767;
+            border-radius: 12px;
+            
+            padding: 14px;
+
+            font-size: 13px;
+            font-weight: 100;
+        }
+
+            .char-counter,
+            .row-counter,
+            .local-save,
+            .last-save,
+            .is-all-saved {
+                padding: 0 15px;
+            }
+
+            .char-counter {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+                .char-counter svg {
+                    height: 14px;
+                    width: 14px;
+                    color: transparent;
+                }
+
+            .alone-dots-footer {
+                color: #564769;
+
+            }
+
+            .last-save {
+                margin-left: auto;
+                border-right: 1px solid #8b466767;
+            }
+
+            .is-all-saved {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+                .is-all-saved svg {
+                    height: 10px;
+                    width: 10px;
+                    color: transparent;
+                }
