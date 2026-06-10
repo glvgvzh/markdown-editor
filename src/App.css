@@ -27,25 +27,40 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
 
-    padding: 10px;
+    padding: 8px;
 
     background: none;
     color: inherit;
+    font: inherit;
     border: 1px solid transparent;
-    border-radius: 8px;
+
+    transition: 0.5s;
 }
 
-button:hover {
-    filter: drop-shadow(0 0 3px #f69ac1);
+button:hover,
+.header-theme,
+.active-button,
+.preview-area h1,
+.preview-area h2,
+.preview-area h3,
+.preview-area h4,
+.preview-area h5,
+.preview-area h6,
+.preview-area em,
+.preview-area ul li::marker,
+.preview-area p a,
+.preview-area p code,
+.preview-area pre code {
+    color: #f082b8;
 }
 
     .app {
         background-color: #0b0917;
-        border: 1px solid #8b466767;
+        box-shadow: 0 0 2px 1px #312540;
         border-radius: 12px;
-        padding: 20px;
+        padding: 20px 14px;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -59,7 +74,7 @@ button:hover {
 
             .header-title {
                 font-size: 24px;
-                border-right: 1px solid grey;
+                border-right: 1px solid #312540;
                 padding: 0 20px;
                 font-weight: 400;
                 color: #eeeeee;
@@ -69,16 +84,22 @@ button:hover {
                 font-size: 20px;
                 font-weight: 200;
                 padding: 0 20px;
-                color: #f082b8;
             }
         
         .toolbar {
             display: flex;
             align-items: center;
-            padding: 20px 0;
+            padding: 10px;
             background-color: #100d1d;
-            margin-bottom: -20px;
+            margin: 0 -14px -20px -14px;
+
+            border-top: 1px solid #312540;
         }
+
+            .active-button {
+                border-radius: 0;
+                border-bottom: 1px solid #f082b8;
+            }
 
             .toolbar-view,
             .toolbar-history,
@@ -92,15 +113,35 @@ button:hover {
                 gap: 30px;
             }
 
+            .toolbar-view button {
+                font-size: 16px;
+            }
+
             .toolbar-history {
+                display: flex;
+                gap: 10px;
                 margin-left: auto;
-                border-right: 1px solid #8b466767;
+                border-right: 1px solid #312540;
                 color: #564769;
+            }
+
+            .undo,
+            .redo {
+                padding: 0 8px;
+            }
+
+            .toolbar-actions {
+                gap: 20px;
+            }
+
+            .toolbar-actions button {
+                box-shadow: 0 0 2px 1px #312540;
+                border-radius: 8px;
             }
 
         .main {
             display: flex;
-            border: 1px solid #8b466767;
+            box-shadow: 0 0 2px 1px #312540;
             border-radius: 12px;
             background-color: #100d1d;
         }
@@ -108,12 +149,12 @@ button:hover {
             .editor-section,
             .preview-section {
                 flex: 1;
-                height: 60vh;
+                height: 67vh;
                 width: 100%;
             }
 
             .main-split .editor-section {
-                border-right: 1px solid #8b466767;
+                border-right: 1px solid #312540;
             }
 
             #editor,
@@ -132,17 +173,55 @@ button:hover {
                 color: inherit;
 
                 overflow-wrap: break-word;
+
+                font: inherit;
             }
 
             .preview-area {
                 overflow-wrap: anywhere;
+                white-space: pre-wrap;
+            }
+
+            .preview-area p a:hover {
+                color: #ce8ad1;
+            }
+
+            .preview-area hr {
+                border: 0.5px solid #f082b8;
+            }
+
+            .preview-area p {
+                white-space: initial;
+            }
+
+            .preview-area ul,
+            .preview-area ol,
+            .preview-area blockquote {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .preview-area blockquote {
+                border-left: 3px solid #ce8ad1;
+                padding-left: 16px;                
+            }
+
+            .preview-area p code {
+                padding: 2px;
+                border-radius: 5px;
+            }
+
+            .preview-area pre,
+            .preview-area p code {
+                background-color: #f082b714;;
             }
 
         .footer {
             display: flex;
             align-items: center;
 
-            border: 1px solid #8b466767;
+            box-shadow: 0 0 2px 1px #312540;
             border-radius: 12px;
             
             padding: 14px;
@@ -178,7 +257,7 @@ button:hover {
 
             .last-save {
                 margin-left: auto;
-                border-right: 1px solid #8b466767;
+                border-right: 1px solid #312540;
             }
 
             .is-all-saved {

@@ -2,6 +2,11 @@ import './App.css'
 import { useState } from "react"
 import { Pencil, Eye, Columns2, Trash2, RotateCcw, RotateCw, Download, EllipsisVertical, Dot, Circle } from 'lucide-react';
 
+import ReactMarkdown from 'react-markdown'
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
 function getSymbolWord(count) {
   const lastDigit = count % 10
   const lastTwoDigits = count % 100
@@ -36,9 +41,9 @@ function App() {
       
       <div className="toolbar">
         <div className='toolbar-view'>
-          <button onClick={() => setViewMode('write')}><Pencil />Write</button>
-          <button onClick={() => setViewMode('preview')}><Eye />Preview</button>
-          <button onClick={() => setViewMode('split')}><Columns2 />Split</button>
+          <button className={viewMode === 'write' ? 'active-button' : ''} onClick={() => setViewMode('write')}><Pencil />Write</button>
+          <button className={viewMode === 'preview' ? 'active-button' : ''} onClick={() => setViewMode('preview')}><Eye />Preview</button>
+          <button className={viewMode === 'split' ? 'active-button' : ''} onClick={() => setViewMode('split')}><Columns2 />Split</button>
         </div>
 
         <div className='toolbar-history'>
@@ -76,7 +81,30 @@ function App() {
         {viewMode === 'preview' &&
           <section className='preview-section'>
             <div className='preview-area'>
-              {text}
+              <ReactMarkdown
+                components={{
+                  code({ inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '')
+
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        style={oneDark}
+                        language={match[1]}
+                        PreTag="div"
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, '')}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code {...props}>
+                        {children}
+                      </code>
+                    )
+                  }
+                }}
+              >
+                {text}
+              </ReactMarkdown>
             </div>
           </section>
         }
@@ -96,7 +124,30 @@ function App() {
 
             <section className='preview-section'>
               <div className='preview-area'>
+                <ReactMarkdown
+                components={{
+                  code({ inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '')
+
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        style={oneDark}
+                        language={match[1]}
+                        PreTag="div"
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, '')}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code {...props}>
+                        {children}
+                      </code>
+                    )
+                  }
+                }}
+              >
                 {text}
+              </ReactMarkdown>
               </div>
             </section>
           </>
