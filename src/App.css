@@ -210,12 +210,14 @@ button:hover,
             .preview-area p code {
                 padding: 2px;
                 border-radius: 5px;
+                background-color: #f082b714;
+                font: inherit;
             }
 
-            .preview-area pre,
-            .preview-area p code {
-                background-color: #f082b714;;
+            .preview-area pre code span {
+                background-color: #161224;
             }
+
 
         .footer {
             display: flex;

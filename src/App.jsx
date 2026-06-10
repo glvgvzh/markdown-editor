@@ -91,7 +91,13 @@ function App() {
                         style={oneDark}
                         language={match[1]}
                         PreTag="div"
-                        {...props}
+                        customStyle={{
+                          background: '#161224',
+                          border: '1px solid #312540',
+                          borderRadius: '10px',
+                          padding: '20px',
+                          margin: '16px 0',
+                        }}
                       >
                         {String(children).replace(/\n$/, '')}
                       </SyntaxHighlighter>
@@ -134,7 +140,14 @@ function App() {
                         style={oneDark}
                         language={match[1]}
                         PreTag="div"
-                        {...props}
+                        customStyle={{
+                          background: '#161224',
+                          border: '1px solid #312540',
+                          borderRadius: '10px',
+                          padding: '20px',
+                          margin: '16px 0',
+                          fontSize: '14px',
+                        }}
                       >
                         {String(children).replace(/\n$/, '')}
                       </SyntaxHighlighter>
