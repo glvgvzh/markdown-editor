@@ -1,13 +1,11 @@
 import './App.css'
 
-// import ReactMarkdown from 'react-markdown'
-
 import EditorSection from './components/EditorSection';
 import MarkdownPreview from './components/MarkdownPreview';
 import Toolbar from './components/Toolbar';
 import Footer from './components/Footer';
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
@@ -29,10 +27,29 @@ function getRowWord(count) {
   return 'строк'
 }
 
+const savedData = JSON.parse(localStorage.getItem('Data'))
+
 function App() {
-  const [text, setText] = useState('')
+
+  const [text, setText] = useState(() => {
+    return savedData !== null ? savedData.text : ''
+  })
+
+  const [time, setTime] = useState(() => {
+    return savedData !== null ? savedData.time : ''
+  })
+
   const rowCounter = text === '' ? 0 : text.split('\n').length
+  
   const [viewMode, setViewMode] = useState('split')
+
+  useEffect(() => {
+    const currentTime = new Date(Date.now()).toLocaleTimeString()
+    const dataToSave = {text, time: currentTime}
+    setTime(currentTime)
+    localStorage.setItem('Data', JSON.stringify(dataToSave))
+  }, [text])
+  
 
 
   return (
@@ -63,7 +80,7 @@ function App() {
         }
       </main>
 
-      <Footer textLength={text.length} symbolWord={getSymbolWord(text.length)} rowCounter={rowCounter} rowWord={getRowWord(rowCounter)} />
+      <Footer time={time} textLength={text.length} symbolWord={getSymbolWord(text.length)} rowCounter={rowCounter} rowWord={getRowWord(rowCounter)} />
 
     </div>
   )
