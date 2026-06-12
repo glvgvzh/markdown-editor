@@ -1,13 +1,13 @@
 import { Pencil, Eye, Columns2, Trash2, RotateCcw, RotateCw, Download, EllipsisVertical } from 'lucide-react';
 
 
-function Toolbar(props) {
+function Toolbar({ handleDownload, viewMode, setViewMode, setText }) {
     return (
         <div className="toolbar">
             <div className='toolbar-view'>
-                <button className={props.viewMode === 'write' ? 'active-button' : ''} onClick={() => props.setViewMode('write')}><Pencil />Write</button>
-                <button className={props.viewMode === 'preview' ? 'active-button' : ''} onClick={() => props.setViewMode('preview')}><Eye />Preview</button>
-                <button className={props.viewMode === 'split' ? 'active-button' : ''} onClick={() => props.setViewMode('split')}><Columns2 />Split</button>
+                <button className={viewMode === 'write' ? 'active-button' : ''} onClick={() => setViewMode('write')}><Pencil />Write</button>
+                <button className={viewMode === 'preview' ? 'active-button' : ''} onClick={() => setViewMode('preview')}><Eye />Preview</button>
+                <button className={viewMode === 'split' ? 'active-button' : ''} onClick={() => setViewMode('split')}><Columns2 />Split</button>
             </div>
 
             <div className='toolbar-history'>
@@ -17,10 +17,10 @@ function Toolbar(props) {
 
             <div className='toolbar-actions'>
                 <button className='download'
-                onClick={() => props.handleDownload()}><Download /></button>
+                onClick={handleDownload}><Download /></button>
                 <button
                     className="clear-button"
-                    onClick={() => props.setText('')}>
+                    onClick={() => setText('')}>
                     <Trash2 />
                 </button>
                 <button className='options'><EllipsisVertical /></button>

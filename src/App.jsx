@@ -59,7 +59,7 @@ function App() {
 
   function handleDownload() {
     if (text === '') {
-      alert('Нет текста для скачивания🌸😔') 
+      alert('Нет текста для скачивания🌸😔')
       return
     }
     const fileToDownload = new Blob([text], { type: 'text/markdown' })
@@ -79,7 +79,12 @@ function App() {
         <h2 className='header-theme'>🌸 Sakura</h2>
       </header>
 
-      <Toolbar handleDownload={handleDownload} viewMode={viewMode} setViewMode={setViewMode} setText={setText} />
+      <Toolbar
+        handleDownload={handleDownload}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
+        setText={setText}
+      />
 
       <main className={`main main-${viewMode}`}>
 
@@ -99,7 +104,13 @@ function App() {
         }
       </main>
 
-      <Footer time={time} textLength={text.length} symbolWord={getSymbolWord(text.length)} rowCounter={rowCounter} rowWord={getRowWord(rowCounter)} />
+      <Footer
+        time={time}
+        textLength={text.length}
+        symbolWord={getSymbolWord(text.length)}
+        rowCounter={rowCounter}
+        rowWord={getRowWord(rowCounter)}
+      />
 
     </div>
   )

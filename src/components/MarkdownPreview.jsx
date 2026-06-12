@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-function MarkdownPreview(props) {
+function MarkdownPreview({ text }) {
   return (
     <section className='preview-section'>
       <div className='preview-area'>
@@ -36,7 +36,7 @@ function MarkdownPreview(props) {
             }
           }}
         >
-          {props.text}
+          {text}
         </ReactMarkdown>
       </div>
     </section>

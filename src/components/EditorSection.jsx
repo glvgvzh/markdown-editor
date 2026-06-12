@@ -1,12 +1,12 @@
-function EditorSection(props) {
+function EditorSection({ text, setText }) {
     return (
         <section className='editor-section'>
             <textarea
               name="editor"
               id="editor"
-              value={props.text}
+              value={text}
               onChange={(e) => {
-                props.setText(e.target.value)
+                setText(e.target.value)
               }}>
             </textarea>
         </section>
