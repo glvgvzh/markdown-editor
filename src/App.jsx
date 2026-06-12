@@ -84,6 +84,7 @@ function App() {
         viewMode={viewMode}
         setViewMode={setViewMode}
         setText={setText}
+        text={text}
       />
 
       <main className={`main main-${viewMode}`}>

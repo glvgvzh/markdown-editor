@@ -1,7 +1,8 @@
 import { Pencil, Eye, Columns2, Trash2, RotateCcw, RotateCw, Download, EllipsisVertical } from 'lucide-react';
 
 
-function Toolbar({ handleDownload, viewMode, setViewMode, setText }) {
+function Toolbar({ handleDownload, viewMode, setViewMode, setText, text }) {
+
     return (
         <div className="toolbar">
             <div className='toolbar-view'>
@@ -17,7 +18,8 @@ function Toolbar({ handleDownload, viewMode, setViewMode, setText }) {
 
             <div className='toolbar-actions'>
                 <button className='download'
-                onClick={handleDownload}><Download /></button>
+                    disabled={text === ''}
+                    onClick={handleDownload}><Download /></button>
                 <button
                     className="clear-button"
                     onClick={() => setText('')}>

@@ -39,7 +39,12 @@ button {
     transition: 0.5s;
 }
 
-button:hover,
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button:not(:disabled):hover,
 .header-theme,
 .active-button,
 .preview-area h1,
