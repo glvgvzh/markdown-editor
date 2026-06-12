@@ -58,6 +58,7 @@ function App() {
   const [viewMode, setViewMode] = useState('split')
 
   function handleDownload() {
+    //на случай если сломается button disabled
     if (text === '') {
       alert('Нет текста для скачивания🌸😔')
       return
@@ -111,6 +112,7 @@ function App() {
         symbolWord={getSymbolWord(text.length)}
         rowCounter={rowCounter}
         rowWord={getRowWord(rowCounter)}
+        hasSavedData={savedData !== null}
       />
 
     </div>
