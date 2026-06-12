@@ -16,7 +16,8 @@ function Toolbar(props) {
             </div>
 
             <div className='toolbar-actions'>
-                <button className='download'><Download /></button>
+                <button className='download'
+                onClick={() => props.handleDownload()}><Download /></button>
                 <button
                     className="clear-button"
                     onClick={() => props.setText('')}>

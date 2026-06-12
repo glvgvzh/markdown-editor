@@ -50,12 +50,26 @@ function App() {
     const currentTime = new Date(Date.now()).toLocaleTimeString()
     const dataToSave = { text, time: currentTime }
 
-    prevText.current === text
+    prevText.current = text
     setTime(currentTime)
     localStorage.setItem('Data', JSON.stringify(dataToSave))
   }, [text])
 
   const [viewMode, setViewMode] = useState('split')
+
+  function handleDownload() {
+    if (text === '') {
+      alert('Нет текста для скачивания🌸😔') 
+      return
+    }
+    const fileToDownload = new Blob([text], { type: 'text/markdown' })
+    const objectURL = URL.createObjectURL(fileToDownload)
+    const link = document.createElement('a')
+    link.href = objectURL
+    link.download = 'sakura.md'
+    link.click()
+    URL.revokeObjectURL(objectURL)
+  }
 
   return (
     <div className="app">
@@ -65,7 +79,7 @@ function App() {
         <h2 className='header-theme'>🌸 Sakura</h2>
       </header>
 
-      <Toolbar viewMode={viewMode} setViewMode={setViewMode} setText={setText} />
+      <Toolbar handleDownload={handleDownload} viewMode={viewMode} setViewMode={setViewMode} setText={setText} />
 
       <main className={`main main-${viewMode}`}>
 
