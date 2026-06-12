@@ -5,7 +5,7 @@ import MarkdownPreview from './components/MarkdownPreview';
 import Toolbar from './components/Toolbar';
 import Footer from './components/Footer';
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 
 
@@ -27,9 +27,10 @@ function getRowWord(count) {
   return 'строк'
 }
 
-const savedData = JSON.parse(localStorage.getItem('Data'))
+
 
 function App() {
+  const savedData = JSON.parse(localStorage.getItem('Data'))
 
   const [text, setText] = useState(() => {
     return savedData !== null ? savedData.text : ''
@@ -40,17 +41,21 @@ function App() {
   })
 
   const rowCounter = text === '' ? 0 : text.split('\n').length
-  
-  const [viewMode, setViewMode] = useState('split')
+
+  const prevText = useRef(text)
 
   useEffect(() => {
+    if (prevText.current === text) return
+
     const currentTime = new Date(Date.now()).toLocaleTimeString()
-    const dataToSave = {text, time: currentTime}
+    const dataToSave = { text, time: currentTime }
+
+    prevText.current === text
     setTime(currentTime)
     localStorage.setItem('Data', JSON.stringify(dataToSave))
   }, [text])
-  
 
+  const [viewMode, setViewMode] = useState('split')
 
   return (
     <div className="app">
@@ -65,11 +70,11 @@ function App() {
       <main className={`main main-${viewMode}`}>
 
         {viewMode === 'write' &&
-          <EditorSection text={text} setText={setText}/>
+          <EditorSection text={text} setText={setText} />
         }
 
         {viewMode === 'preview' &&
-            <MarkdownPreview text={text} />
+          <MarkdownPreview text={text} />
         }
 
         {viewMode === 'split' &&
