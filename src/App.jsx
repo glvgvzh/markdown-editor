@@ -37,14 +37,18 @@ function getRowWord(count) {
 
 function App() {
 
-  const [theme, setTheme] = useState('sakura')
+  const savedTheme = localStorage.getItem('theme')
+  const [theme, setTheme] = useState(() => (savedTheme !== null ? savedTheme : 'sakura'))
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const [viewMode, setViewMode] = useState('split')
 
   const savedData = JSON.parse(localStorage.getItem('Data'))
-
   const [text, setText] = useState(() => {
     return savedData !== null ? savedData.text : ''
   })
-
   const [time, setTime] = useState(() => {
     return savedData !== null ? savedData.time : ''
   })
@@ -52,19 +56,16 @@ function App() {
   const rowCounter = text === '' ? 0 : text.split('\n').length
 
   const prevText = useRef(text)
-
   useEffect(() => {
     if (prevText.current === text) return
 
     const currentTime = new Date(Date.now()).toLocaleTimeString()
-    const dataToSave = { text, time: currentTime }
+    const dataToSave = { text, time: currentTime, }
 
     prevText.current = text
     setTime(currentTime)
     localStorage.setItem('Data', JSON.stringify(dataToSave))
   }, [text])
-
-  const [viewMode, setViewMode] = useState('split')
 
   function handleDownload() {
     //на случай если сломается button disabled
@@ -89,12 +90,12 @@ function App() {
         <header className='header'>
           <h1 className='header-title'>Markdown Editor</h1>
           {/* <h2 className='header-theme'>{themes[theme]}</h2> */}
-            <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
-              {/* <option value="sakura">Sakura</option>
+          <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
+            {/* <option value="sakura">Sakura</option>
               <option value="ocean">Ocean</option> */}
-              {arrThemes.map((e) => <option key={e[0]} value={e[0]}>{e[1]}</option>
-              )}
-              
+            {arrThemes.map((e) => <option key={e[0]} value={e[0]}>{e[1]}</option>
+            )}
+
           </select>
         </header>
 
