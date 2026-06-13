@@ -106,7 +106,7 @@ button:not(:disabled):hover,
 
             .header-title {
                 font-size: 24px;
-                border-right: 1px solid var(--borders-color);
+                /* border-right: 1px solid var(--borders-color); */
                 padding: 0 20px;
                 font-weight: 400;
                 color: var(--body-text-color);
@@ -122,11 +122,11 @@ button:not(:disabled):hover,
                     margin-left: auto;
                     margin-right: 20px;
                     color: var(--accent);
-                    padding: 5px;
+                    /* padding: 5px; */
                     background-color: transparent;
                     border: none;
                     outline: none;
-                    font-size: inherit;
+                    font-size: 20px;
                 }
         
         .toolbar {
