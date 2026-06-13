@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from "react"
 const themes = {
   sakura: '🌸 Sakura',
   ocean: '🌊 Ocean',
+  moonlight: '🌙 Moonlight'
 }
 
 const arrThemes = Object.entries(themes)

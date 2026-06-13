@@ -24,10 +24,29 @@
     --app-bgc: #0b181c;
     --borders-color: #1f3a40;
     --toolbar-and-main-bgc: #011822;
-    --linksHover-and-blockquote: #28856c;
+    --linksHover-and-blockquote: #38b2ac;
     --successSave-color: #338852;
     --failSave-color: #740000;
     --preview-p-code-bgc: #4fd1c514;
+}
+
+.theme-moonlight {
+    --accent: #b794f6;
+
+    --body-bgc: #040814;
+    --body-text-color: #d8d7e6;
+
+    --app-bgc: #0a1020;
+    --borders-color: #28314f;
+
+    --toolbar-and-main-bgc: #0d1528;
+
+    --linksHover-and-blockquote: #d6bcfa;
+
+    --successSave-color: #338852;
+    --failSave-color: #740000;
+
+    --preview-p-code-bgc: #a78bfa14;
 }
 
 * {
@@ -119,6 +138,7 @@ button:not(:disabled):hover,
             }
 
                 .select-theme {
+                    text-align: end;
                     margin-left: auto;
                     margin-right: 20px;
                     color: var(--accent);
