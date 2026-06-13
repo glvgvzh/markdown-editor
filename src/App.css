@@ -15,6 +15,8 @@
     --successSave-color: #338852;
     --failSave-color: #740000;
     --preview-p-code-bgc: #f082b714;
+
+    --body-image: url('./assets/backgrounds/sakura background.png');
 }
 
 .theme-ocean {
@@ -28,6 +30,7 @@
     --successSave-color: #338852;
     --failSave-color: #740000;
     --preview-p-code-bgc: #4fd1c514;
+    --body-image: url('./assets/backgrounds/ocean background.png');
 }
 
 .theme-moonlight {
@@ -47,6 +50,7 @@
     --failSave-color: #740000;
 
     --preview-p-code-bgc: #a78bfa14;
+    --body-image: url('./assets/backgrounds/moonlight background.png');
 }
 
 * {
@@ -55,12 +59,17 @@
 }
 
 body {
-    padding: 20px;
+    padding: 50px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     /* font-family: 'Inter', sans-serif; */
     background-color: var(--body-bgc);
     color: var(--body-text-color);
     font-weight: 200;
+
+    background-image: var(--body-image);
+    background-size: cover;
+    background-position: center 20%;
+    background-attachment: fixed;
 }
 
 svg {
@@ -109,6 +118,7 @@ button:not(:disabled):hover,
 }
 
     .app {
+        opacity: 0.93;
         background-color: var(--app-bgc);
         box-shadow: 0 0 2px 1px var(--borders-color);
         border-radius: 12px;
@@ -125,7 +135,6 @@ button:not(:disabled):hover,
 
             .header-title {
                 font-size: 24px;
-                /* border-right: 1px solid var(--borders-color); */
                 padding: 0 20px;
                 font-weight: 400;
                 color: var(--body-text-color);
@@ -142,7 +151,6 @@ button:not(:disabled):hover,
                     margin-left: auto;
                     margin-right: 20px;
                     color: var(--accent);
-                    /* padding: 5px; */
                     background-color: transparent;
                     border: none;
                     outline: none;
@@ -213,7 +221,7 @@ button:not(:disabled):hover,
             .editor-section,
             .preview-section {
                 flex: 1;
-                height: 67vh;
+                height: 60vh;
                 width: 100%;
             }
 

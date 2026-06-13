@@ -43,6 +43,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem('theme', theme)
   }, [theme])
+  useEffect(() => {
+    document.body.className = `theme-${theme}`
+  })
 
   const [viewMode, setViewMode] = useState('split')
 
@@ -85,15 +88,12 @@ function App() {
 
   return (
 
-    <div className={`theme-${theme}`}>
+    // <div className={`theme-${theme}`}>
       <div className='app'>
 
         <header className='header'>
           <h1 className='header-title'>Markdown Editor</h1>
-          {/* <h2 className='header-theme'>{themes[theme]}</h2> */}
           <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
-            {/* <option value="sakura">Sakura</option>
-              <option value="ocean">Ocean</option> */}
             {arrThemes.map((e) => <option key={e[0]} value={e[0]}>{e[1]}</option>
             )}
 
@@ -136,7 +136,7 @@ function App() {
         />
 
       </div>
-    </div>
+    // </div>
 
   )
 }
