@@ -11,10 +11,10 @@ function Toolbar({ handleDownload, viewMode, setViewMode, setText, text }) {
                 <button className={viewMode === 'split' ? 'active-button' : ''} onClick={() => setViewMode('split')}><Columns2 />Split</button>
             </div>
 
-            <div className='toolbar-history'>
+            {/* <div className='toolbar-history'>
                 <button className='undo'><RotateCcw /></button>
                 <button className='redo'><RotateCw /></button>
-            </div>
+            </div> */}
 
             <div className='toolbar-actions'>
                 <button className='download'
@@ -25,7 +25,7 @@ function Toolbar({ handleDownload, viewMode, setViewMode, setText, text }) {
                     onClick={() => setText('')}>
                     <Trash2 />
                 </button>
-                <button className='options'><EllipsisVertical /></button>
+                {/* <button className='options'><EllipsisVertical /></button> */}
             </div>
 
         </div>

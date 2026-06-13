@@ -7,6 +7,10 @@ import Footer from './components/Footer';
 
 import { useState, useEffect, useRef } from "react"
 
+const themes = {
+  sakura: '🌸 Sakura',
+  ocean: '🌊 Ocean',
+}
 
 
 function getSymbolWord(count) {
@@ -30,6 +34,9 @@ function getRowWord(count) {
 
 
 function App() {
+
+  const [theme, setTheme] = useState('sakura')
+
   const savedData = JSON.parse(localStorage.getItem('Data'))
 
   const [text, setText] = useState(() => {
@@ -60,7 +67,7 @@ function App() {
   function handleDownload() {
     //на случай если сломается button disabled
     if (text === '') {
-      alert('Нет текста для скачивания🌸😔')
+      alert('Нет текста для скачивания😔')
       return
     }
     const fileToDownload = new Blob([text], { type: 'text/markdown' })
@@ -73,49 +80,57 @@ function App() {
   }
 
   return (
-    <div className="app">
 
-      <header className='header'>
-        <h1 className='header-title'>Markdown Editor</h1>
-        <h2 className='header-theme'>🌸 Sakura</h2>
-      </header>
+    <div className={`theme-${theme}`}>
+      <div className='app'>
 
-      <Toolbar
-        handleDownload={handleDownload}
-        viewMode={viewMode}
-        setViewMode={setViewMode}
-        setText={setText}
-        text={text}
-      />
+        <header className='header'>
+          <h1 className='header-title'>Markdown Editor</h1>
+          <h2 className='header-theme'>{themes[theme]}</h2>
+            <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
+              <option value="sakura">Sakura</option>
+              <option value="ocean">Ocean</option>
+          </select>
+        </header>
 
-      <main className={`main main-${viewMode}`}>
+        <Toolbar
+          handleDownload={handleDownload}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          setText={setText}
+          text={text}
+        />
 
-        {viewMode === 'write' &&
-          <EditorSection text={text} setText={setText} />
-        }
+        <main className={`main main-${viewMode}`}>
 
-        {viewMode === 'preview' &&
-          <MarkdownPreview text={text} />
-        }
-
-        {viewMode === 'split' &&
-          <>
+          {viewMode === 'write' &&
             <EditorSection text={text} setText={setText} />
+          }
+
+          {viewMode === 'preview' &&
             <MarkdownPreview text={text} />
-          </>
-        }
-      </main>
+          }
 
-      <Footer
-        time={time}
-        textLength={text.length}
-        symbolWord={getSymbolWord(text.length)}
-        rowCounter={rowCounter}
-        rowWord={getRowWord(rowCounter)}
-        hasSavedData={savedData !== null}
-      />
+          {viewMode === 'split' &&
+            <>
+              <EditorSection text={text} setText={setText} />
+              <MarkdownPreview text={text} />
+            </>
+          }
+        </main>
 
+        <Footer
+          time={time}
+          textLength={text.length}
+          symbolWord={getSymbolWord(text.length)}
+          rowCounter={rowCounter}
+          rowWord={getRowWord(rowCounter)}
+          hasSavedData={savedData !== null}
+        />
+
+      </div>
     </div>
+
   )
 }
 

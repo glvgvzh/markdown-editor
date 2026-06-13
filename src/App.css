@@ -4,6 +4,32 @@
 мал точки в футере и конпки вперед-назад в тулзах: #564769*/
 
 
+:root {
+    --accent: #f082b8;
+    --body-bgc: #060612;
+    --body-text-color: #d1d0d0;
+    --app-bgc: #0b0917;
+    --borders-color: #312540;
+    --toolbar-and-main-bgc: #100d1d;
+    --linksHover-and-blockquote: #ce8ad1;
+    --successSave-color: #338852;
+    --failSave-color: #740000;
+    --preview-p-code-bgc: #f082b714;
+}
+
+.theme-ocean {
+    --accent: #4fd1c5;
+    --body-bgc: #051012;
+    --body-text-color: #d1d0d0;
+    --app-bgc: #0b181c;
+    --borders-color: #1f3a40;
+    --toolbar-and-main-bgc: #011822;
+    --linksHover-and-blockquote: #28856c;
+    --successSave-color: #338852;
+    --failSave-color: #740000;
+    --preview-p-code-bgc: #4fd1c514;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -13,8 +39,8 @@ body {
     padding: 20px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     /* font-family: 'Inter', sans-serif; */
-    background-color: #060612;
-    color: #aca1c4;
+    background-color: var(--body-bgc);
+    color: var(--body-text-color);
     font-weight: 200;
 }
 
@@ -44,10 +70,13 @@ button:disabled {
   opacity: 0.5;
 }
 
+strong {
+    font-weight: 600;
+}
+
 button:not(:disabled):hover,
 .header-theme,
 .active-button,
-.preview-area h1,
 .preview-area h2,
 .preview-area h3,
 .preview-area h4,
@@ -56,21 +85,19 @@ button:not(:disabled):hover,
 .preview-area em,
 .preview-area ul li::marker,
 .preview-area p a,
-.preview-area p code,
-.preview-area pre code {
-    color: #f082b8;
+.preview-area p code {
+    color: var(--accent)
 }
 
     .app {
-        background-color: #0b0917;
-        box-shadow: 0 0 2px 1px #312540;
+        background-color: var(--app-bgc);
+        box-shadow: 0 0 2px 1px var(--borders-color);
         border-radius: 12px;
         padding: 20px 14px;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-
 
         .header {
             display: flex;
@@ -79,10 +106,10 @@ button:not(:disabled):hover,
 
             .header-title {
                 font-size: 24px;
-                border-right: 1px solid #312540;
+                border-right: 1px solid var(--borders-color);
                 padding: 0 20px;
                 font-weight: 400;
-                color: #eeeeee;
+                color: var(--body-text-color);
             }
 
             .header-theme {
@@ -90,20 +117,31 @@ button:not(:disabled):hover,
                 font-weight: 200;
                 padding: 0 20px;
             }
+
+                .select-theme {
+                    margin-left: auto;
+                    margin-right: 20px;
+                    color: var(--accent);
+                    padding: 5px;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    font-size: inherit;
+                }
         
         .toolbar {
             display: flex;
             align-items: center;
             padding: 10px;
-            background-color: #100d1d;
+            background-color: var(--toolbar-and-main-bgc);
             margin: 0 -14px -20px -14px;
 
-            border-top: 1px solid #312540;
+            border-top: 1px solid var(--borders-color);
         }
 
             .active-button {
                 border-radius: 0;
-                border-bottom: 1px solid #f082b8;
+                border-bottom: 1px solid var(--accent);
             }
 
             .toolbar-view,
@@ -122,33 +160,34 @@ button:not(:disabled):hover,
                 font-size: 16px;
             }
 
-            .toolbar-history {
+            /* .toolbar-history {
                 display: flex;
                 gap: 10px;
                 margin-left: auto;
-                border-right: 1px solid #312540;
+                border-right: 1px solid var(--borders-color);
                 color: #564769;
-            }
+            } */
 
-            .undo,
+            /* .undo,
             .redo {
                 padding: 0 8px;
-            }
+            } */
 
             .toolbar-actions {
+                margin-left: auto;
                 gap: 20px;
             }
 
             .toolbar-actions button {
-                box-shadow: 0 0 2px 1px #312540;
+                box-shadow: 0 0 2px 1px var(--borders-color);
                 border-radius: 8px;
             }
 
         .main {
             display: flex;
-            box-shadow: 0 0 2px 1px #312540;
+            box-shadow: 0 0 2px 1px var(--borders-color);
             border-radius: 12px;
-            background-color: #100d1d;
+            background-color: var(--toolbar-and-main-bgc);
         }
 
             .editor-section,
@@ -159,7 +198,7 @@ button:not(:disabled):hover,
             }
 
             .main-split .editor-section {
-                border-right: 1px solid #312540;
+                border-right: 1px solid var(--borders-color);
             }
 
             #editor,
@@ -188,11 +227,11 @@ button:not(:disabled):hover,
             }
 
             .preview-area p a:hover {
-                color: #ce8ad1;
+                color: var(--linksHover-and-blockquote);
             }
 
             .preview-area hr {
-                border: 0.5px solid #f082b8;
+                border: 0.5px solid var(--accent);
             }
 
             .preview-area ul,
@@ -204,19 +243,26 @@ button:not(:disabled):hover,
             }
 
             .preview-area blockquote {
-                border-left: 3px solid #ce8ad1;
+                border-left: 3px solid var(--linksHover-and-blockquote);
                 padding-left: 16px;                
             }
 
             .preview-area p code {
-                padding: 2px;
+                padding: 2px 5px;
                 border-radius: 5px;
-                background-color: #f082b714;
+                background-color: var(--preview-p-code-bgc);
                 font: inherit;
             }
 
-            .preview-area pre code span {
-                background-color: #161224;
+            .preview-area pre code span,
+            .preview-area pre code,
+            .preview-area pre div {
+                background: transparent !important;
+            }
+
+            .preview-area pre div {
+                border: none !important;
+                box-shadow: 0 0 2px 1px var(--borders-color);
             }
 
 
@@ -224,7 +270,7 @@ button:not(:disabled):hover,
             display: flex;
             align-items: center;
 
-            box-shadow: 0 0 2px 1px #312540;
+            box-shadow: 0 0 2px 1px var(--borders-color);
             border-radius: 12px;
             
             padding: 14px;
@@ -232,6 +278,18 @@ button:not(:disabled):hover,
             font-size: 13px;
             font-weight: 100;
         }
+
+            .counter-circle {
+                fill: var(--accent);
+            }
+
+            .successSave {
+                fill: var(--successSave-color);
+            }
+
+            .failSave {
+                fill: var(--failSave-color);
+            }
 
             .char-counter,
             .row-counter,
@@ -254,13 +312,13 @@ button:not(:disabled):hover,
                 }
 
             .alone-dot-footer {
-                color: #564769;
+                color: var(--borders-color);
 
             }
 
             .last-save {
                 margin-left: auto;
-                border-right: 1px solid #312540;
+                border-right: 1px solid var(--borders-color);
             }
 
             .is-all-saved {
