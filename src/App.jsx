@@ -3,6 +3,7 @@ import './App.css'
 import EditorSection from './components/EditorSection';
 import MarkdownPreview from './components/MarkdownPreview';
 import Toolbar from './components/Toolbar';
+import FormattingToolbar from './components/FormattingToolbar';
 import Footer from './components/Footer';
 
 import { useState, useEffect, useRef } from "react"
@@ -115,6 +116,8 @@ function App() {
         setText={setText}
         text={text}
       />
+
+      <FormattingToolbar text={text} setText={setText} />
 
       <main className={`main main-${viewMode}`}>
 

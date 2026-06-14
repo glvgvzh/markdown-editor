@@ -1,28 +1,43 @@
 :root {
     --accent: #f082b8;
+
     --body-bgc: #060612;
     --body-text-color: #d1d0d0;
+
     --app-bgc: #0b0917;
     --borders-color: #312540;
-    --toolbar-and-main-bgc: #100d1d;
+
+    --borders: 0 0 2px 1px var(--borders-color);
+
+    --containers-bgc: #100d1d;
+
     --linksHover-and-blockquote: #ce8ad1;
+
     --successSave-color: #338852;
     --failSave-color: #740000;
-    --preview-p-code-bgc: #f082b714;
 
+    --preview-p-code-bgc: #f082b714;
     --body-image: url('./assets/backgrounds/sakura background.png');
 }
 
 .theme-ocean {
     --accent: #4fd1c5;
+
     --body-bgc: #051012;
     --body-text-color: #d1d0d0;
+
     --app-bgc: #0b181c;
     --borders-color: #1f3a40;
-    --toolbar-and-main-bgc: #011822;
+
+    --borders: 0 0 2px 1px var(--borders-color);
+
+    --containers-bgc: #011822;
+
     --linksHover-and-blockquote: #38b2ac;
+
     --successSave-color: #338852;
     --failSave-color: #740000;
+
     --preview-p-code-bgc: #4fd1c514;
     --body-image: url('./assets/backgrounds/ocean background.png');
 }
@@ -36,7 +51,9 @@
     --app-bgc: #0a1020;
     --borders-color: #28314f;
 
-    --toolbar-and-main-bgc: #0d1528;
+    --borders: 0 0 2px 1px var(--borders-color);
+
+    --containers-bgc: #0d1528;
 
     --linksHover-and-blockquote: #d6bcfa;
 
@@ -53,7 +70,7 @@
 }
 
 body {
-    padding: 50px;
+    padding: 1.7% 10%;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--body-bgc);
     color: var(--body-text-color);
@@ -83,7 +100,7 @@ button {
     font: inherit;
     border: 1px solid transparent;
 
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 button:disabled {
@@ -112,7 +129,7 @@ button:not(:disabled):hover,
     .app {
         opacity: 0.93;
         background-color: var(--app-bgc);
-        box-shadow: 0 0 2px 1px var(--borders-color);
+        box-shadow: var(--borders);
         border-radius: 12px;
         padding: 20px 14px;
         display: flex;
@@ -147,10 +164,10 @@ button:not(:disabled):hover,
             display: flex;
             align-items: center;
             padding: 10px;
-            background-color: var(--toolbar-and-main-bgc);
-            margin: 0 -14px -20px -14px;
+            background-color: var(--containers-bgc);
 
-            border-top: 1px solid var(--borders-color);
+            box-shadow: var(--borders);
+            border-radius: 12px;
         }
 
             .active-button {
@@ -179,15 +196,48 @@ button:not(:disabled):hover,
             }
 
             .toolbar-actions button {
-                box-shadow: 0 0 2px 1px var(--borders-color);
+                box-shadow: var(--borders);
                 border-radius: 8px;
+            }
+
+        .formatting-toolbar {
+            background-color: var(--containers-bgc);
+            display: flex;
+            align-items: center;
+            margin: -10px 0;
+            box-shadow: var(--borders);
+            border-radius: 8px;
+            padding: 10px 0;
+        }
+
+            .formatting-toolbar button {
+                width: 36px;
+                height: 36px;
+                box-shadow: var(--borders);
+                border-radius: 8px;
+            }
+
+            .headings,
+            .text-formattings,
+            .lists,
+            .others {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                padding: 0 30px;
+            }
+
+            .headings,
+            .text-formattings,
+            .lists {
+                border-right: 1px solid var(--borders-color);
             }
 
         .main {
             display: flex;
-            box-shadow: 0 0 2px 1px var(--borders-color);
+            box-shadow:var(--borders);
             border-radius: 12px;
-            background-color: var(--toolbar-and-main-bgc);
+            background-color: var(--containers-bgc);
         }
 
             .editor-section,
@@ -262,18 +312,13 @@ button:not(:disabled):hover,
 
             .preview-area pre div {
                 border: none !important;
-                box-shadow: 0 0 2px 1px var(--borders-color);
+                box-shadow: var(--borders)
             }
 
 
         .footer {
             display: flex;
             align-items: center;
-
-            box-shadow: 0 0 2px 1px var(--borders-color);
-            border-radius: 12px;
-            
-            padding: 14px;
 
             font-size: 13px;
             font-weight: 100;
