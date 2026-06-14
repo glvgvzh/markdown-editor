@@ -4,7 +4,6 @@ function EditorSection({ text, setText }) {
       <textarea
         name="editor"
         id="editor"
-        autoFocus
         value={text}
         onChange={(e) => {
           setText(e.target.value)

@@ -20,7 +20,17 @@ function FormattingToolbar({ text, setText }) {
         const start = textarea.selectionStart
         const end = textarea.selectionEnd
 
-        if (start === end) return
+        if (textarea.value.trim() === '') {
+            if (symbol === 'bold' || symbol === 'italic' || symbol === 'code') {
+                setText(`${symbols[symbol]}${symbols[symbol]}`)
+            }
+            else {
+                setText(`${symbols[symbol]}`)
+            }
+
+            textarea.focus()
+            return
+        }
 
         const substr = textarea.value.substring(start, end)
         let replacement
@@ -30,8 +40,10 @@ function FormattingToolbar({ text, setText }) {
         else {
             replacement = `${symbols[symbol]}${substr}`
         }
-        textarea.setRangeText(replacement, start, end, 'select')
+        textarea.setRangeText(replacement, start, end, 'end')
         setText(textarea.value)
+
+        textarea.focus()
     }
 
     return (
@@ -56,7 +68,13 @@ function FormattingToolbar({ text, setText }) {
 
             <div className="others">
                 <button><Link /></button>
-                <button><Minus /></button>
+                <button onClick={() => {
+                    const textarea = document.getElementById('editor')
+                    const start = textarea.selectionStart
+                    const end = textarea.selectionEnd
+                    text.trim() === '' ? setText('___\n') : setText(text.slice(0, start) + '\n___\n' + text.slice(end))
+                    textarea.focus()
+                }}><Minus /></button>
             </div>
         </div>
     )
