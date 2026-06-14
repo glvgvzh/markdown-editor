@@ -4,6 +4,8 @@
     --body-bgc: #060612;
     --body-text-color: #d1d0d0;
 
+    --placeholder-color: #757575;
+
     --app-bgc: #0b0917;
     --borders-color: #312540;
 
@@ -26,6 +28,8 @@
     --body-bgc: #051012;
     --body-text-color: #d1d0d0;
 
+    --placeholder-color: #757575;
+
     --app-bgc: #0b181c;
     --borders-color: #1f3a40;
 
@@ -47,6 +51,8 @@
 
     --body-bgc: #040814;
     --body-text-color: #d8d7e6;
+
+    --placeholder-color: #757575;
 
     --app-bgc: #0a1020;
     --borders-color: #28314f;
@@ -252,7 +258,8 @@ button:not(:disabled):hover,
             }
 
             #editor,
-            .preview-area {
+            .preview-area,
+            .preview-area-placeholder {
                 padding: 20px;
                 overflow-y: auto;
                 height: 100%;
@@ -271,7 +278,16 @@ button:not(:disabled):hover,
                 font: inherit;
             }
 
-            .preview-area {
+            .preview-area-placeholder {
+                color: var(--placeholder-color); 
+            }
+
+            #editor::placeholder {
+                color: var(--placeholder-color) !important;
+            }
+
+            .preview-area,
+            .preview-area-placeholder {
                 overflow-wrap: anywhere;
                 white-space: pre-wrap;
             }

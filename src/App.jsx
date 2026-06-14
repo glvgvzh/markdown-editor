@@ -10,13 +10,16 @@ import { useState, useEffect, useRef } from "react"
 
 const themes = {
   sakura: {
-    name: '🌸 Sakura',
+    name: 'Sakura',
+    emoji: '🌸',
   },
   ocean: {
-    name: '🌊 Ocean',
+    name: 'Ocean',
+    emoji: '🌊',
   },
   moonlight: {
-    name: '🌙 Moonlight',
+    name: 'Moonlight',
+    emoji: '🌙',
   },
 }
 
@@ -102,7 +105,7 @@ function App() {
         <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
           {themeOptions.map(([key, data]) => (
             <option key={key} value={key}>
-              {data.name}
+              {data.emoji} {data.name}
             </option>
           ))}
 
@@ -122,17 +125,17 @@ function App() {
       <main className={`main main-${viewMode}`}>
 
         {viewMode === 'write' &&
-          <EditorSection text={text} setText={setText} />
+          <EditorSection text={text} setText={setText} emoji={themes[theme].emoji} />
         }
 
         {viewMode === 'preview' &&
-          <MarkdownPreview text={text} />
+          <MarkdownPreview text={text} emoji={themes[theme].emoji} />
         }
 
         {viewMode === 'split' &&
           <>
-            <EditorSection text={text} setText={setText} />
-            <MarkdownPreview text={text} />
+            <EditorSection text={text} setText={setText} emoji={themes[theme].emoji} />
+            <MarkdownPreview text={text} emoji={themes[theme].emoji} />
           </>
         }
       </main>

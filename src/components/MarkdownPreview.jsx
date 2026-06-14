@@ -3,7 +3,16 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-function MarkdownPreview({ text }) {
+function MarkdownPreview({ text, emoji }) {
+  if (text === '') {
+    return (
+      <section className='preview-section'>
+      <div className='preview-area-placeholder'>
+        {emoji}  Здесь появится предпросмотр документа
+      </div>
+    </section>
+    )
+  }
   return (
     <section className='preview-section'>
       <div className='preview-area'>
