@@ -8,12 +8,18 @@ import Footer from './components/Footer';
 import { useState, useEffect, useRef } from "react"
 
 const themes = {
-  sakura: '🌸 Sakura',
-  ocean: '🌊 Ocean',
-  moonlight: '🌙 Moonlight'
+  sakura: {
+    name: '🌸 Sakura',
+  },
+  ocean: {
+    name: '🌊 Ocean',
+  },
+  moonlight: {
+    name: '🌙 Moonlight',
+  },
 }
 
-const arrThemes = Object.entries(themes)
+const themeOptions = Object.entries(themes)
 
 
 function getSymbolWord(count) {
@@ -45,7 +51,7 @@ function App() {
   }, [theme])
   useEffect(() => {
     document.body.className = `theme-${theme}`
-  })
+  }, [theme])
 
   const [viewMode, setViewMode] = useState('split')
 
@@ -81,63 +87,63 @@ function App() {
     const objectURL = URL.createObjectURL(fileToDownload)
     const link = document.createElement('a')
     link.href = objectURL
-    link.download = 'sakura.md'
+    link.download = 'markdown-editor.md'
     link.click()
     URL.revokeObjectURL(objectURL)
   }
 
   return (
 
-    // <div className={`theme-${theme}`}>
-      <div className='app'>
+    <div className='app'>
 
-        <header className='header'>
-          <h1 className='header-title'>Markdown Editor</h1>
-          <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
-            {arrThemes.map((e) => <option key={e[0]} value={e[0]}>{e[1]}</option>
-            )}
+      <header className='header'>
+        <h1 className='header-title'>Markdown Editor</h1>
+        <select className='select-theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
+          {themeOptions.map(([key, data]) => (
+            <option key={key} value={key}>
+              {data.name}
+            </option>
+          ))}
 
-          </select>
-        </header>
+        </select>
+      </header>
 
-        <Toolbar
-          handleDownload={handleDownload}
-          viewMode={viewMode}
-          setViewMode={setViewMode}
-          setText={setText}
-          text={text}
-        />
+      <Toolbar
+        handleDownload={handleDownload}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
+        setText={setText}
+        text={text}
+      />
 
-        <main className={`main main-${viewMode}`}>
+      <main className={`main main-${viewMode}`}>
 
-          {viewMode === 'write' &&
+        {viewMode === 'write' &&
+          <EditorSection text={text} setText={setText} />
+        }
+
+        {viewMode === 'preview' &&
+          <MarkdownPreview text={text} />
+        }
+
+        {viewMode === 'split' &&
+          <>
             <EditorSection text={text} setText={setText} />
-          }
-
-          {viewMode === 'preview' &&
             <MarkdownPreview text={text} />
-          }
+          </>
+        }
+      </main>
 
-          {viewMode === 'split' &&
-            <>
-              <EditorSection text={text} setText={setText} />
-              <MarkdownPreview text={text} />
-            </>
-          }
-        </main>
+      <Footer
+        time={time}
+        textLength={text.length}
+        symbolWord={getSymbolWord(text.length)}
+        rowCounter={rowCounter}
+        rowWord={getRowWord(rowCounter)}
+        hasSavedData={savedData !== null}
+      />
 
-        <Footer
-          time={time}
-          textLength={text.length}
-          symbolWord={getSymbolWord(text.length)}
-          rowCounter={rowCounter}
-          rowWord={getRowWord(rowCounter)}
-          hasSavedData={savedData !== null}
-        />
-
-      </div>
-    // </div>
-
+    </div>
   )
 }
 

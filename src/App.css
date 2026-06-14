@@ -1,9 +1,3 @@
-/* цвета:
-розовый: #f082b8 
-зеленый: #338852
-мал точки в футере и конпки вперед-назад в тулзах: #564769*/
-
-
 :root {
     --accent: #f082b8;
     --body-bgc: #060612;
@@ -61,7 +55,6 @@
 body {
     padding: 50px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    /* font-family: 'Inter', sans-serif; */
     background-color: var(--body-bgc);
     color: var(--body-text-color);
     font-weight: 200;
@@ -103,7 +96,6 @@ strong {
 }
 
 button:not(:disabled):hover,
-.header-theme,
 .active-button,
 .preview-area h2,
 .preview-area h3,
@@ -140,22 +132,16 @@ button:not(:disabled):hover,
                 color: var(--body-text-color);
             }
 
-            .header-theme {
+            .select-theme {
+                text-align: end;
+                margin-left: auto;
+                margin-right: 20px;
+                color: var(--accent);
+                background-color: transparent;
+                border: none;
+                outline: none;
                 font-size: 20px;
-                font-weight: 200;
-                padding: 0 20px;
             }
-
-                .select-theme {
-                    text-align: end;
-                    margin-left: auto;
-                    margin-right: 20px;
-                    color: var(--accent);
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                    font-size: 20px;
-                }
         
         .toolbar {
             display: flex;
@@ -173,7 +159,6 @@ button:not(:disabled):hover,
             }
 
             .toolbar-view,
-            .toolbar-history,
             .toolbar-actions {
                 display: flex;
                 padding: 0 20px;
@@ -187,19 +172,6 @@ button:not(:disabled):hover,
             .toolbar-view button {
                 font-size: 16px;
             }
-
-            /* .toolbar-history {
-                display: flex;
-                gap: 10px;
-                margin-left: auto;
-                border-right: 1px solid var(--borders-color);
-                color: #564769;
-            } */
-
-            /* .undo,
-            .redo {
-                padding: 0 8px;
-            } */
 
             .toolbar-actions {
                 margin-left: auto;
